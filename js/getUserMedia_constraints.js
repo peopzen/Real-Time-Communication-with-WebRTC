@@ -71,10 +71,13 @@ hdButton.onclick = function(){getMedia(hdConstraints)};
 
 // Simple wrapper for getUserMedia() with constraints object as
 // an input parameter
-function getMedia(Constraints){
+function getMedia(constraints){
 	if(!!stream) {
 		video.src = null;
-		stream.stop();
+		//stream.stop(); --> failed with this code, replace:
+		if (stream) {
+			stream.getTracks().forEach(function (track) {track.stop();});
+		}
 	}
 	navigator.getUserMedia(constraints, successCallback, errorCallback);
 }
