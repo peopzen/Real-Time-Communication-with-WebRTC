@@ -71,7 +71,7 @@ hdButton.onclick = function(){getMedia(hdConstraints)};
 
 // Simple wrapper for getUserMedia() with constraints object as
 // an input parameter
-function getMedia(constraints){
+function getMedia(Constraints){
 	if(!!stream) {
 		video.src = null;
 		stream.stop();
